@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <style>
+       
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #c0cfee;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #d5d88e 0%, #647eb2 100%);
+            background-size: 200% 200%;
+            animation: gradientAnimation 5s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        html, * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        h3 {
+            color: #555;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 70vh;
+            background-color: white;
+           
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        #messages {
+            width: 100%;
+            max-height: 100%;
+            flex-grow: 1;
+            margin-bottom: 20px;
+            padding: 10px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #f9fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e5ea;
+            scrollbar-width: thin;
+            scrollbar-color: #999 #e2e5ea;
+        }
+
+        li {
+            list-style: none;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f1f3f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+        }
+
+       
+        .input-group {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .input {
+            height: 45px;
+            width: 68%;
+            padding: 0 1rem;
+            color: #333;
+            font-size: 15px;
+            border: 1px solid #d1d6db;
+           
+            background-color: #fff;
+            outline: none;
+            transition: border 0.3s ease-in-out;
+        }
+
+        .input:focus {
+            border-color: #a1b2c3;
+        }
+
+        .button--submit {
+            height: 45px;
+            padding: 0.5em 1em;
+            border: none;
+          
+            background-color: #5ca0d3;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .button--submit:hover {
+            background-color: #4990c0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #e2e5ea;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #999;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Chat App</h1>
+        <div class="container">
+            <ul id="messages"></ul>
+        </div>
+
+        <form id="message-form">
+            <div class="input-group">
+                <input type="text" class="input" id="chatbox" name="messages" placeholder="Enter your message..." required>
+                <input class="button--submit" id="send-button" value="Send" type="submit">
+            </div>
+        </form>
+    </center>
+
+    <script src="/socket.io/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
